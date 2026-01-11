@@ -1,0 +1,30 @@
+{
+  "name": "Betaflight DevContainer",
+  "dockerFile": "Dockerfile",
+
+  // Mount the project root into the container
+  "workspaceFolder": "/workspaces/betaflight",
+
+  // Forward ports for potential web services (if needed)
+  "forwardPorts": [80, 8080],
+
+  // Optional: install extensions for VS Code inside the container
+  "extensions": [
+    "ms-vscode.cpptools", 
+    "ms-vscode.cpptools-extension-pack",
+    "opencode.opencode"
+  ],
+
+  // Enable Docker‑in‑Docker feature with latest version
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest",
+      "enableNonRootDocker": true,
+      "moby": true
+    }
+  },
+
+  // Set default command for Betaflight development
+  "postCreateCommand": "git config --global user.name 'Romain Valtier' && git config --global user.email 'romain@valtier.fr'",
+  "remoteUser": "root"
+}
